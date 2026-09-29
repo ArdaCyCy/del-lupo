@@ -17,12 +17,12 @@
   <body
     class="antialiased selection:bg-white selection:text-black min-h-screen flex flex-col justify-between"
   >
-    <!-- Navbar (Kayma Yapmayan 3 Sütunlu Sabit Grid Yapı) -->
+    <!-- Navbar (Mobilde Uyumlu / Masaüstünde 3 Sütunlu Grid) -->
     <header
       class="bg-[#050505]/95 backdrop-blur-md border-b border-zinc-900 sticky top-0 z-40"
     >
       <div
-        class="max-w-[1440px] mx-auto px-6 py-4 grid grid-cols-3 items-center"
+        class="max-w-[1440px] mx-auto px-4 sm:px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between"
       >
         <nav
           class="hidden md:flex items-center gap-8 text-sm font-bold tracking-widest uppercase text-zinc-300"
@@ -36,14 +36,14 @@
         </nav>
         <a
           href="index.html"
-          class="text-2xl font-black tracking-tighter text-white uppercase justify-self-center"
+          class="text-xl sm:text-2xl font-black tracking-tighter text-white uppercase md:justify-self-center"
         >
           Del Lupo<span class="text-zinc-600">.</span>
         </a>
-        <div class="flex items-center justify-end gap-6">
+        <div class="flex items-center justify-end gap-3 sm:gap-6">
           <a
             href="index.html"
-            class="bg-white text-black font-bold px-4 py-2 rounded-sm text-xs uppercase tracking-wider hover:bg-zinc-200 transition"
+            class="bg-white text-black font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-sm text-[10px] sm:text-xs uppercase tracking-wider hover:bg-zinc-200 transition"
             >Mağaza</a
           >
         </div>
@@ -51,16 +51,18 @@
     </header>
 
     <!-- Ana İçerik -->
-    <main class="max-w-xl mx-auto px-6 py-16 flex-1 w-full">
+    <main class="max-w-xl mx-auto px-4 sm:px-6 py-16 flex-1 w-full">
       <div
-        class="bg-[#111] border border-zinc-900 rounded-3xl p-8 shadow-2xl space-y-8"
+        class="bg-[#111] border border-zinc-900 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-8"
       >
         <div>
           <span
             class="text-[10px] font-black uppercase tracking-widest text-zinc-500 block mb-1"
             >Del Lupo Pay</span
           >
-          <h1 class="text-3xl font-black tracking-tight text-white uppercase">
+          <h1
+            class="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase"
+          >
             Dijital Cüzdanım
           </h1>
         </div>
@@ -73,7 +75,10 @@
             <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">
               Mevcut Bakiye
             </p>
-            <h2 id="wallet-balance" class="text-4xl font-black text-white">
+            <h2
+              id="wallet-balance"
+              class="text-3xl sm:text-4xl font-black text-white"
+            >
               €0.00
             </h2>
           </div>

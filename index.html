@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Del Lupo — Heavyweight Oversize Streetwear</title>
-
     <meta
       name="description"
       content="Del Lupo 480 GSM %100 Compact Cotton Heavyweight Oversize Hoodies. Sınırlı sayıda özel üretim."
@@ -43,14 +42,14 @@
     class="antialiased selection:bg-white selection:text-black min-h-screen flex flex-col justify-between"
   >
     <div>
-      <!-- Bushido Navbar (3 Sütunlu Grid - Asla Kayma Yapmaz) -->
+      <!-- Bushido Navbar (Mobilde Flex, Masaüstünde 3 Sütunlu Grid - Kayma Sıfır) -->
       <header
         class="bg-[#050505]/95 backdrop-blur-md border-b border-zinc-900 sticky top-0 z-40"
       >
         <div
-          class="max-w-[1440px] mx-auto px-6 py-4 grid grid-cols-3 items-center"
+          class="max-w-[1440px] mx-auto px-3 sm:px-6 py-3 flex md:grid md:grid-cols-3 items-center justify-between"
         >
-          <!-- Sütun 1: Menüler -->
+          <!-- Sütun 1: Masaüstü Menüler -->
           <nav
             class="hidden md:flex items-center gap-8 text-sm font-bold tracking-widest uppercase text-zinc-300"
           >
@@ -68,19 +67,19 @@
             </button>
           </nav>
 
-          <!-- Sütun 2: Merkez Logo (Kusursuz Ortalama, Kayma Sıfır) -->
+          <!-- Sütun 2: Merkez Logo -->
           <a
             href="index.html"
-            class="text-2xl font-black tracking-tighter text-white uppercase justify-self-center"
+            class="text-lg sm:text-2xl font-black tracking-tighter text-white uppercase md:justify-self-center"
           >
             Del Lupo<span class="text-zinc-600">.</span>
           </a>
 
-          <!-- Sütun 3: Sağ İkonlar -->
-          <div class="flex items-center justify-end gap-6">
+          <!-- Sütun 3: Sağ İkonlar ve Cüzdan Bakiyesi -->
+          <div class="flex items-center justify-end gap-2 sm:gap-6">
             <button
               id="search-toggle-btn"
-              class="text-zinc-300 hover:text-white transition cursor-pointer"
+              class="hidden sm:flex text-zinc-300 hover:text-white transition cursor-pointer"
               title="Ara"
             >
               <svg
@@ -95,7 +94,7 @@
               </svg>
             </button>
 
-            <div id="user-auth-area" class="relative"></div>
+            <div id="user-auth-area" class="relative flex items-center"></div>
 
             <button
               id="open-cart-btn"
@@ -205,7 +204,6 @@
             Yeni drop duyurularından ve özel lansman indirimlerinden ilk siz
             haberdar olun.
           </p>
-
           <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3">
             <input
               type="email"
@@ -331,9 +329,6 @@
           >
             Ödeme Yöntemleri
           </h5>
-          <p class="text-xs text-zinc-500 mb-3">
-            Güvenli 256-bit SSL altyapısı.
-          </p>
           <div class="flex flex-wrap gap-2 items-center">
             <div
               class="bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded flex items-center justify-center h-7"
@@ -371,7 +366,9 @@
       </div>
     </footer>
 
-    <!-- Modallar (Arama, Yasal, Sepet, Beden) aynı kalıyor -->
+    <!-- MODALLAR -->
+
+    <!-- Arama Modalı -->
     <div
       id="search-modal"
       class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-start justify-center pt-32 px-4 opacity-0 pointer-events-none transition-opacity duration-300"
@@ -396,6 +393,7 @@
       </div>
     </div>
 
+    <!-- Yasal / Kurumsal Bilgi Modalı -->
     <div
       id="legal-modal"
       class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
@@ -422,6 +420,7 @@
       </div>
     </div>
 
+    <!-- Sepet Modalı (Slide-Over Drawer) -->
     <div
       id="cart-modal"
       class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-end opacity-0 pointer-events-none transition-opacity duration-300"
@@ -548,6 +547,7 @@
       </div>
     </div>
 
+    <!-- Beden Rehberi Modalı -->
     <div
       id="size-chart-modal"
       class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
@@ -566,20 +566,13 @@
         >
           Beden ve Ölçü Rehberi
         </h3>
-        <p class="text-xs text-zinc-400 mb-6">
-          Ölçüler cm cinsindendir. Heavyweight Boxy/Drop-shoulder kalıptır.
-        </p>
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-left text-zinc-300 border-collapse">
             <thead>
-              <tr
-                class="border-b border-zinc-800 text-zinc-500 uppercase tracking-wider"
-              >
+              <tr class="border-b border-zinc-800 text-zinc-500">
                 <th class="p-3">Beden</th>
-                <th class="p-3">Boy (cm)</th>
-                <th class="p-3">Göğüs (cm)</th>
-                <th class="p-3">Omuz (cm)</th>
-                <th class="p-3">Kol (cm)</th>
+                <th class="p-3">Boy</th>
+                <th class="p-3">Göğüs</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-zinc-800/50">
@@ -587,29 +580,21 @@
                 <td class="p-3 font-bold text-white">S</td>
                 <td class="p-3">66</td>
                 <td class="p-3">63</td>
-                <td class="p-3">63</td>
-                <td class="p-3">56</td>
               </tr>
               <tr>
                 <td class="p-3 font-bold text-white">M</td>
                 <td class="p-3">68</td>
                 <td class="p-3">65</td>
-                <td class="p-3">65</td>
-                <td class="p-3">57</td>
               </tr>
               <tr>
                 <td class="p-3 font-bold text-white">L</td>
                 <td class="p-3">70</td>
                 <td class="p-3">67</td>
-                <td class="p-3">67</td>
-                <td class="p-3">58</td>
               </tr>
               <tr>
                 <td class="p-3 font-bold text-white">XL</td>
                 <td class="p-3">72</td>
                 <td class="p-3">69</td>
-                <td class="p-3">69</td>
-                <td class="p-3">59</td>
               </tr>
             </tbody>
           </table>
