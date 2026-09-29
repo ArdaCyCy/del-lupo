@@ -30,7 +30,7 @@ let products = [];
 let cart = JSON.parse(localStorage.getItem("hoodie_cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("hoodie_wishlist")) || [];
 
-// ⚠️ Kendi admin e-posta adresin
+// ⚠️ KESİN ADMIN MAİLİNİZ
 const ADMIN_EMAIL = "16ardaguner@gmail.com";
 
 // Oturum ve Profil Menüsü Yönetimi

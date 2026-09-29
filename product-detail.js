@@ -51,9 +51,10 @@ let selectedSize = "M";
 let currentProduct = null;
 let currentUser = null;
 
-const ADMIN_EMAIL = "arda@gmail.com";
+// ⚠️ ADMIN MAILİNİZ KESİN OLARAK TANIMLANDI
+const ADMIN_EMAIL = "16ardaguner@gmail.com";
 
-// Oturum, Profil Adam Simgesi ve Bakiye Yönetimi (Ürün Detay Sayfası İçin)
+// Oturum, Profil Adam Simgesi, Bakiye ve Dropdown Yönetimi
 onAuthStateChanged(auth, async (user) => {
   currentUser = user;
   const userAuthArea = document.getElementById("user-auth-area");
@@ -128,7 +129,7 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-// Beden Rehberi Modal Kontrolü (Ürün Detay Sayfası)
+// Beden Rehberi Modal Kontrolü
 const openSizeChartBtn = document.getElementById("open-size-chart-btn");
 const closeSizeChartBtn = document.getElementById("close-size-chart-btn");
 const sizeChartModal = document.getElementById("size-chart-modal");
