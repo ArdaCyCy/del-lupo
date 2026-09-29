@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ödeme Yap - Hoodie Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 font-sans text-gray-900 min-h-screen flex flex-col">
+    <header class="bg-white border-b sticky top-0 z-40">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="text-2xl font-black tracking-wider text-gray-900"
+          >HOODIE STORE</a
+        >
+        <a
+          href="cart.html"
+          class="text-sm font-semibold text-gray-600 hover:text-black"
+          >← Sepete Dön</a
+        >
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+      <h1 class="text-3xl font-black text-gray-900 mb-6">Ödeme ve Teslimat</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Form -->
+        <form
+          id="checkout-form"
+          class="bg-white p-6 rounded-2xl border shadow-sm space-y-4"
+        >
+          <h2 class="font-bold text-lg text-gray-800 border-b pb-2">
+            Teslimat Bilgileri
+          </h2>
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 mb-1"
+              >Ad Soyad</label
+            >
+            <input
+              type="text"
+              id="cust-name"
+              required
+              placeholder="Ahmet Yılmaz"
+              class="w-full p-2.5 border rounded-xl text-sm outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 mb-1"
+              >Telefon</label
+            >
+            <input
+              type="text"
+              id="cust-phone"
+              required
+              placeholder="0555 555 55 55"
+              class="w-full p-2.5 border rounded-xl text-sm outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 mb-1"
+              >Teslimat Adresi</label
+            >
+            <textarea
+              id="cust-address"
+              required
+              placeholder="Açık adresiniz..."
+              rows="3"
+              class="w-full p-2.5 border rounded-xl text-sm outline-none"
+            ></textarea>
+          </div>
+
+          <h2 class="font-bold text-lg text-gray-800 border-b pb-2 pt-2">
+            Kredi Kartı Bilgileri (İyziCo / Stripe Mock)
+          </h2>
+          <div>
+            <input
+              type="text"
+              id="card-num"
+              required
+              maxlength="19"
+              placeholder="0000 0000 0000 0000"
+              class="w-full p-2.5 border rounded-xl text-sm outline-none mb-2"
+            />
+            <div class="flex gap-2">
+              <input
+                type="text"
+                id="card-exp"
+                required
+                placeholder="AA/YY"
+                class="w-1/2 p-2.5 border rounded-xl text-sm outline-none"
+              />
+              <input
+                type="text"
+                id="card-cvc"
+                required
+                maxlength="3"
+                placeholder="CVC"
+                class="w-1/2 p-2.5 border rounded-xl text-sm outline-none"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            id="checkout-submit-btn"
+            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-xl transition text-base mt-4"
+          >
+            Ödemeyi Tamamla
+          </button>
+        </form>
+
+        <!-- Özet ve Kupon -->
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-2xl border shadow-sm">
+            <h2 class="font-bold text-lg text-gray-800 border-b pb-2 mb-4">
+              Sipariş Özeti
+            </h2>
+            <div
+              id="checkout-summary-items"
+              class="space-y-2 mb-4 max-h-48 overflow-y-auto"
+            ></div>
+
+            <!-- İndirim Kuponu -->
+            <div class="border-t pt-4">
+              <label class="block text-xs font-bold text-gray-600 mb-1"
+                >İndirim Kuponu</label
+              >
+              <div class="flex gap-2">
+                <input
+                  type="text"
+                  id="coupon-code-input"
+                  placeholder="HOODIE10"
+                  class="w-full p-2 border rounded-xl text-sm uppercase outline-none"
+                />
+                <button
+                  type="button"
+                  id="apply-coupon-btn"
+                  class="bg-gray-800 text-white text-xs font-bold px-4 rounded-xl"
+                >
+                  Uygula
+                </button>
+              </div>
+              <p id="coupon-msg" class="text-xs mt-1 hidden"></p>
+            </div>
+
+            <div class="border-t pt-4 mt-4 space-y-1">
+              <div class="flex justify-between text-sm text-gray-500">
+                <span>Ara Toplam:</span>
+                <span id="subtotal-display">€0</span>
+              </div>
+              <div
+                id="discount-row"
+                class="flex justify-between text-sm text-emerald-600 font-bold hidden"
+              >
+                <span>İndirim:</span>
+                <span id="discount-display">-€0</span>
+              </div>
+              <div
+                class="flex justify-between text-xl font-bold text-gray-900 border-t pt-2"
+              >
+                <span>Toplam:</span>
+                <span id="final-total-display" class="text-indigo-600">€0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="checkout.js"></script>
+  </body>
+</html>

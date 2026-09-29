@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel — Del Lupo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 min-h-screen p-6">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div
+        class="flex items-center justify-between border-b border-zinc-800 pb-4"
+      >
+        <div>
+          <h1 class="text-3xl font-black tracking-tight text-white uppercase">
+            Yönetim Paneli
+          </h1>
+          <p class="text-xs text-zinc-400 mt-1">
+            Stok yönetimi, sipariş takibi ve kupon kontrolü.
+          </p>
+        </div>
+        <a
+          href="index.html"
+          class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-4 py-2 rounded-xl font-medium transition text-xs border border-zinc-700/50"
+        >
+          ← Mağazaya Dön
+        </a>
+      </div>
+
+      <!-- Ürün Ekle -->
+      <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-xl">
+        <h2 class="text-lg font-bold text-white mb-4 uppercase">
+          Yeni Ürün Ekle
+        </h2>
+        <form id="add-product-form" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                >Ürün Adı</label
+              >
+              <input
+                type="text"
+                id="product-name"
+                required
+                placeholder="The Janissary Oversize Hoodie"
+                class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs text-zinc-200 outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                >Fiyat (€)</label
+              >
+              <input
+                type="number"
+                id="product-price"
+                required
+                value="70"
+                class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs text-zinc-200 outline-none"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                >Stok Adedi</label
+              >
+              <input
+                type="number"
+                id="product-stock"
+                required
+                value="20"
+                class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs text-zinc-200 outline-none"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-zinc-400 mb-1"
+              >Bilgisayardan Görsel Seç</label
+            >
+            <input
+              type="file"
+              id="product-file"
+              accept="image/*"
+              required
+              class="w-full text-xs text-zinc-400 bg-zinc-950 border border-zinc-800 rounded-xl p-2.5 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-white file:text-black hover:file:bg-zinc-200 cursor-pointer"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="save-btn"
+            class="bg-white text-black font-extrabold px-6 py-3 rounded-xl transition text-xs uppercase tracking-wider hover:bg-zinc-200 cursor-pointer"
+          >
+            Ürünü Kaydet
+          </button>
+        </form>
+      </div>
+
+      <!-- Kupon Ekle ve Yönet -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div
+          class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-xl flex flex-col justify-between"
+        >
+          <div>
+            <h2 class="text-lg font-bold text-white mb-4 uppercase">
+              İndirim Kuponu Ekle
+            </h2>
+            <form id="add-coupon-form" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                  >Kupon Kodu</label
+                >
+                <input
+                  type="text"
+                  id="coupon-code"
+                  required
+                  placeholder="DELLUPO10"
+                  class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs uppercase text-zinc-200 outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-zinc-400 mb-1"
+                  >İndirim Yüzdesi (%)</label
+                >
+                <input
+                  type="number"
+                  id="coupon-discount"
+                  required
+                  placeholder="10"
+                  min="1"
+                  max="100"
+                  class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-xl text-xs text-zinc-200 outline-none"
+                />
+              </div>
+              <button
+                type="submit"
+                class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-2.5 rounded-xl transition text-xs uppercase tracking-wider cursor-pointer"
+              >
+                Kuponu Aktif Et
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-xl flex flex-col justify-between"
+        >
+          <div>
+            <h2 class="text-lg font-bold text-white mb-4 uppercase">
+              Aktif Kuponları Yönet
+            </h2>
+            <div
+              id="admin-coupon-list"
+              class="space-y-3 max-h-48 overflow-y-auto pr-1"
+            >
+              <p class="text-zinc-500 text-xs">Kuponlar yükleniyor...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ürün Listesi -->
+      <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-xl">
+        <h2 class="text-lg font-bold text-white mb-4 uppercase">
+          Mevcut Ürünler & Stoklar
+        </h2>
+        <div id="admin-product-list" class="space-y-3">
+          <p class="text-zinc-500 text-xs">Yükleniyor...</p>
+        </div>
+      </div>
+
+      <!-- Siparişler -->
+      <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-2xl shadow-xl">
+        <h2 class="text-lg font-bold text-white mb-4 uppercase">
+          Gelen Siparişler
+        </h2>
+        <div id="admin-orders-list" class="space-y-4">
+          <p class="text-zinc-500 text-xs">Siparişler yükleniyor...</p>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+  </body>
+</html>

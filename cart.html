@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sepetiniz - Hoodie Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 font-sans text-gray-900 min-h-screen flex flex-col">
+    <header class="bg-white border-b sticky top-0 z-40">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a
+          href="index.html"
+          class="text-2xl font-black tracking-wider text-gray-900"
+          >HOODIE STORE</a
+        >
+        <a
+          href="index.html"
+          class="text-sm font-semibold text-indigo-600 hover:underline"
+          >← Alışverişe Devam Et</a
+        >
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
+      <h1 class="text-3xl font-black text-gray-900 mb-6">
+        Alışveriş Sepetiniz
+      </h1>
+
+      <div
+        id="cart-page-items"
+        class="bg-white p-6 rounded-2xl border shadow-sm space-y-4 mb-6"
+      >
+        <p class="text-gray-500 text-center py-8">Sepetiniz boş.</p>
+      </div>
+
+      <div
+        class="bg-white p-6 rounded-2xl border shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <div>
+          <span class="text-gray-500 text-sm">Toplam Tutar:</span>
+          <h2 id="cart-page-total" class="text-3xl font-black text-indigo-600">
+            €0
+          </h2>
+        </div>
+
+        <a
+          href="checkout.html"
+          class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl transition text-center"
+        >
+          Ödemeye Geç →
+        </a>
+      </div>
+    </main>
+
+    <script>
+      function renderCartPage() {
+        const container = document.getElementById("cart-page-items");
+        const totalEl = document.getElementById("cart-page-total");
+        let cart = JSON.parse(localStorage.getItem("hoodie_cart")) || [];
+
+        if (cart.length === 0) {
+          container.innerHTML =
+            "<p class='text-gray-500 text-center py-8'>Sepetiniz boş.</p>";
+          totalEl.textContent = "€0";
+          return;
+        }
+
+        container.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+          total += item.price * item.qty;
+          const div = document.createElement("div");
+          div.className = "flex items-center justify-between border-b pb-4";
+          div.innerHTML = `
+          <div class="flex items-center gap-4">
+            <img src="${item.image || "https://via.placeholder.com/60"}" class="w-16 h-16 object-cover rounded-xl">
+            <div>
+              <h3 class="font-bold text-gray-800">${item.name}</h3>
+              <p class="text-xs text-gray-500">Beden: <strong class="text-gray-800">${item.size}</strong> | Adet: ${item.qty}</p>
+              <p class="text-sm font-bold text-indigo-600">€${item.price * item.qty}</p>
+            </div>
+          </div>
+          <button onclick="removePageCartItem(${index})" class="text-red-500 font-bold text-xs hover:underline">Kaldır</button>
+        `;
+          container.appendChild(div);
+        });
+
+        totalEl.textContent = `€${total}`;
+      }
+
+      window.removePageCartItem = function (index) {
+        let cart = JSON.parse(localStorage.getItem("hoodie_cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("hoodie_cart", JSON.stringify(cart));
+        renderCartPage();
+      };
+
+      renderCartPage();
+    </script>
+  </body>
+</html>

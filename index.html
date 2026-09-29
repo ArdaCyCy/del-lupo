@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Del Lupo — Heavyweight Oversize Streetwear</title>
+
+    <meta
+      name="description"
+      content="Del Lupo 480 GSM %100 Compact Cotton Heavyweight Oversize Hoodies. Sınırlı sayıda özel üretim."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap");
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: #050505;
+        color: #fff;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      @keyframes ticker {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      .ticker-wrap {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .ticker-move {
+        display: inline-block;
+        animation: ticker 25s linear infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="antialiased selection:bg-white selection:text-black min-h-screen flex flex-col justify-between"
+  >
+    <div>
+      <!-- Bushido Navbar (3 Sütunlu Grid - Asla Kayma Yapmaz) -->
+      <header
+        class="bg-[#050505]/95 backdrop-blur-md border-b border-zinc-900 sticky top-0 z-40"
+      >
+        <div
+          class="max-w-[1440px] mx-auto px-6 py-4 grid grid-cols-3 items-center"
+        >
+          <!-- Sütun 1: Menüler -->
+          <nav
+            class="hidden md:flex items-center gap-8 text-sm font-bold tracking-widest uppercase text-zinc-300"
+          >
+            <a href="index.html" class="hover:text-white transition"
+              >Ana Sayfa</a
+            >
+            <a href="#products-section" class="hover:text-white transition"
+              >Koleksiyonlar</a
+            >
+            <button
+              id="open-size-chart-btn"
+              class="text-sm font-bold tracking-widest uppercase text-zinc-300 hover:text-white transition cursor-pointer"
+            >
+              Beden Rehberi
+            </button>
+          </nav>
+
+          <!-- Sütun 2: Merkez Logo (Kusursuz Ortalama, Kayma Sıfır) -->
+          <a
+            href="index.html"
+            class="text-2xl font-black tracking-tighter text-white uppercase justify-self-center"
+          >
+            Del Lupo<span class="text-zinc-600">.</span>
+          </a>
+
+          <!-- Sütun 3: Sağ İkonlar -->
+          <div class="flex items-center justify-end gap-6">
+            <button
+              id="search-toggle-btn"
+              class="text-zinc-300 hover:text-white transition cursor-pointer"
+              title="Ara"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+
+            <div id="user-auth-area" class="relative"></div>
+
+            <button
+              id="open-cart-btn"
+              class="relative text-zinc-300 hover:text-white transition cursor-pointer"
+              title="Sepetim"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"
+                ></path>
+              </svg>
+              <span
+                id="cart-count"
+                class="absolute -top-2 -right-2 bg-white text-black font-black rounded-full w-4 h-4 text-[9px] flex items-center justify-center"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Kayan Duyuru Bandı -->
+      <div
+        class="bg-white text-black text-[11px] font-black tracking-widest uppercase py-2.5 overflow-hidden border-b border-zinc-200"
+      >
+        <div class="ticker-wrap">
+          <span class="ticker-move">
+            STOKLAR YENİLENDİ — SÜREKLİ HAREKET HALİNDE — YENİ DROP 01 YAYINDA —
+            TÜM SİPARİŞLERDE ÜCRETSİZ KARGO — DEL LUPO CULTURE —
+          </span>
+        </div>
+      </div>
+
+      <!-- Hero Header -->
+      <main class="max-w-[1440px] mx-auto px-6 py-16">
+        <div class="mb-16 text-center max-w-3xl mx-auto">
+          <span
+            class="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-3 block"
+            >DEL LUPO / DROP 01</span
+          >
+          <h1
+            class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 uppercase"
+          >
+            HEAVYWEIGHT OVERSIZED
+          </h1>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            480 GSM %100 Compact Cotton. Özel drop-shoulder kesim, Fransız havlu
+            kumaş ve çift katman kalıplı kapüşon mimarisi.
+          </p>
+        </div>
+
+        <!-- Arama ve Sıralama Barı -->
+        <div
+          id="products-section"
+          class="flex flex-col sm:flex-row gap-4 mb-12 justify-between items-center bg-[#111] p-4 rounded-xl border border-zinc-900"
+        >
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Del Lupo parça ara..."
+            class="w-full sm:w-80 px-4 py-3 bg-[#050505] border border-zinc-800 rounded-lg text-xs text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-white transition"
+          />
+
+          <div class="flex items-center gap-3 w-full sm:w-auto">
+            <button
+              id="show-wishlist-btn"
+              class="text-xs font-bold text-zinc-300 bg-zinc-900 hover:bg-zinc-800 px-4 py-3 rounded-lg border border-zinc-800 transition uppercase tracking-wider cursor-pointer"
+            >
+              ❤️ Favoriler (<span id="wishlist-count">0</span>)
+            </button>
+
+            <select
+              id="sort-select"
+              class="w-full sm:w-auto bg-[#050505] border border-zinc-800 rounded-lg px-4 py-3 text-xs text-zinc-200 outline-none focus:border-white transition uppercase font-bold cursor-pointer"
+            >
+              <option value="default">Öne Çıkanlar</option>
+              <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+              <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Ürün Grid -->
+        <div
+          id="product-list"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+        >
+          <p class="text-zinc-500 col-span-full text-center py-20 text-sm">
+            Del Lupo koleksiyonu yükleniyor...
+          </p>
+        </div>
+
+        <!-- Bülten Aboneliği -->
+        <section
+          class="mt-28 bg-[#111] border border-zinc-900 rounded-2xl p-8 sm:p-12 text-center max-w-2xl mx-auto shadow-2xl"
+        >
+          <h3 class="text-2xl font-black text-white mb-2 uppercase">
+            KULÜBE KATILIN
+          </h3>
+          <p class="text-xs text-zinc-400 mb-6">
+            Yeni drop duyurularından ve özel lansman indirimlerinden ilk siz
+            haberdar olun.
+          </p>
+
+          <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              id="newsletter-email"
+              required
+              placeholder="ornek@mail.com"
+              class="flex-1 px-4 py-3.5 bg-[#050505] border border-zinc-800 rounded-lg text-xs text-zinc-200 outline-none focus:border-white"
+            />
+            <button
+              type="submit"
+              class="bg-white hover:bg-zinc-200 text-black font-extrabold text-xs px-8 py-3.5 rounded-lg transition uppercase tracking-wider cursor-pointer"
+            >
+              Kayıt Ol
+            </button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="border-t border-zinc-900 bg-[#050505] text-zinc-400 py-16 mt-28"
+    >
+      <div
+        class="max-w-[1440px] mx-auto px-6 lg:px-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-12"
+      >
+        <div>
+          <h4
+            class="text-white font-black text-lg tracking-tighter uppercase mb-4"
+          >
+            Del Lupo.
+          </h4>
+          <p class="text-xs leading-relaxed text-zinc-500">
+            Heavyweight streetwear culture. Sınırlı sayıda üretilen özel
+            oversize parçalar.
+          </p>
+        </div>
+        <div>
+          <h5
+            class="text-white font-bold text-xs uppercase tracking-widest mb-4"
+          >
+            Kurumsal
+          </h5>
+          <ul class="space-y-3 text-xs">
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('about')"
+                class="hover:text-white transition"
+                >Hakkımızda</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('blog')"
+                class="hover:text-white transition"
+                >Blog / Hikayemiz</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('contact')"
+                class="hover:text-white transition"
+                >İletişim</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="text-white font-bold text-xs uppercase tracking-widest mb-4"
+          >
+            Destek & Yasal
+          </h5>
+          <ul class="space-y-3 text-xs">
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('shipping')"
+                class="hover:text-white transition"
+                >Kargo ve İade</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('privacy')"
+                class="hover:text-white transition"
+                >Gizlilik Sözleşmesi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('terms')"
+                class="hover:text-white transition"
+                >Kullanıcı Sözleşmesi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('sales')"
+                class="hover:text-white transition"
+                >Mesafeli Satış Sözleşmesi</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                onclick="openLegalModal('faq')"
+                class="hover:text-white transition"
+                >Sıkça Sorulan Sorular (SSS)</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5
+            class="text-white font-bold text-xs uppercase tracking-widest mb-4"
+          >
+            Ödeme Yöntemleri
+          </h5>
+          <p class="text-xs text-zinc-500 mb-3">
+            Güvenli 256-bit SSL altyapısı.
+          </p>
+          <div class="flex flex-wrap gap-2 items-center">
+            <div
+              class="bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded flex items-center justify-center h-7"
+            >
+              <span
+                class="text-blue-400 font-black italic text-xs tracking-tighter"
+                >VISA</span
+              >
+            </div>
+            <div
+              class="bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded flex items-center justify-center h-7"
+            >
+              <div class="flex -space-x-1.5">
+                <div class="w-3.5 h-3.5 rounded-full bg-red-600/90"></div>
+                <div class="w-3.5 h-3.5 rounded-full bg-amber-500/90"></div>
+              </div>
+            </div>
+            <div
+              class="bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded flex items-center justify-center h-7 text-white text-[10px] font-bold"
+            >
+               Pay
+            </div>
+            <div
+              class="bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded flex items-center justify-center h-7 text-orange-400 text-[10px] font-black"
+            >
+              iyzico
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-[1440px] mx-auto px-6 lg:px-12 border-t border-zinc-900/80 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-zinc-600"
+      >
+        <p>© 2026 Del Lupo. Tüm hakları saklıdır.</p>
+      </div>
+    </footer>
+
+    <!-- Modallar (Arama, Yasal, Sepet, Beden) aynı kalıyor -->
+    <div
+      id="search-modal"
+      class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-start justify-center pt-32 px-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div class="w-full max-w-2xl relative">
+        <button
+          id="close-search-modal"
+          class="absolute -top-12 right-0 text-zinc-400 hover:text-white text-3xl cursor-pointer"
+        >
+          &times;
+        </button>
+        <input
+          type="text"
+          id="modal-search-input"
+          placeholder="Hangi Del Lupo parçasını arıyorsunuz?"
+          class="w-full px-6 py-4 bg-[#111] border border-zinc-800 rounded-2xl text-base text-white placeholder-zinc-500 outline-none focus:border-white transition shadow-2xl"
+        />
+        <div
+          id="modal-search-results"
+          class="mt-4 space-y-2 max-h-[60vh] overflow-y-auto"
+        ></div>
+      </div>
+    </div>
+
+    <div
+      id="legal-modal"
+      class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="bg-[#111] border border-zinc-800 w-full max-w-2xl rounded-2xl p-8 relative shadow-2xl max-h-[80vh] overflow-y-auto"
+      >
+        <button
+          onclick="closeLegalModal()"
+          class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl cursor-pointer"
+        >
+          &times;
+        </button>
+        <h3
+          id="legal-title"
+          class="text-lg font-black text-white mb-4 uppercase tracking-wide"
+        >
+          Başlık
+        </h3>
+        <div
+          id="legal-content"
+          class="text-xs text-zinc-300 space-y-3 leading-relaxed"
+        ></div>
+      </div>
+    </div>
+
+    <div
+      id="cart-modal"
+      class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-end opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="bg-[#111] border-l border-zinc-900 w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
+      >
+        <div>
+          <div
+            class="flex items-center justify-between border-b border-zinc-800 pb-4 mb-4"
+          >
+            <h2
+              class="text-sm font-extrabold text-white uppercase tracking-wider"
+            >
+              SEPETİNİZ
+            </h2>
+            <button
+              id="close-cart-btn"
+              class="text-zinc-400 hover:text-white text-2xl cursor-pointer"
+            >
+              &times;
+            </button>
+          </div>
+          <div
+            id="cart-items"
+            class="space-y-4 max-h-[35vh] overflow-y-auto pr-1"
+          >
+            <p class="text-zinc-500 text-center py-8 text-xs">Sepetiniz boş.</p>
+          </div>
+          <form
+            id="checkout-form"
+            class="mt-6 border-t border-zinc-800 pt-4 space-y-3"
+          >
+            <h3
+              class="font-bold text-zinc-300 text-xs tracking-wider uppercase"
+            >
+              Teslimat & Ödeme
+            </h3>
+            <input
+              type="text"
+              id="cust-name"
+              required
+              placeholder="Ad Soyad"
+              class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-xs text-zinc-200 outline-none focus:border-white"
+            />
+            <input
+              type="text"
+              id="cust-phone"
+              required
+              placeholder="Telefon Numarası"
+              class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-xs text-zinc-200 outline-none focus:border-white"
+            />
+            <textarea
+              id="cust-address"
+              required
+              placeholder="Teslimat Adresi"
+              rows="2"
+              class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-xs text-zinc-200 outline-none focus:border-white"
+            ></textarea>
+
+            <div class="pt-2">
+              <label
+                class="block text-[10px] font-bold text-zinc-400 mb-1 uppercase"
+                >Ödeme Yöntemi</label
+              >
+              <select
+                id="payment-method-select"
+                class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-lg text-xs text-zinc-200 outline-none"
+              >
+                <option value="wallet">Cüzdan Bakiyem ile Öde</option>
+                <option value="card">Simülasyon / Test Kartı ile Öde</option>
+              </select>
+            </div>
+
+            <div class="pt-2">
+              <label
+                class="block text-[10px] font-bold text-zinc-400 mb-1 uppercase"
+                >Kupon Kodu</label
+              >
+              <div class="flex gap-2">
+                <input
+                  type="text"
+                  id="coupon-code-input"
+                  placeholder="DELLUPO10"
+                  class="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg text-xs uppercase text-zinc-200 outline-none"
+                />
+                <button
+                  type="button"
+                  id="apply-coupon-btn"
+                  class="bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-bold px-4 py-2 rounded-lg transition cursor-pointer"
+                >
+                  Uygula
+                </button>
+              </div>
+              <p id="coupon-message" class="text-xs mt-1 hidden"></p>
+            </div>
+          </form>
+        </div>
+        <div class="border-t border-zinc-800 pt-4 mt-4">
+          <div class="space-y-1 mb-4 text-xs">
+            <div class="flex justify-between text-zinc-400">
+              <span>Ara Toplam:</span><span id="cart-subtotal">€0</span>
+            </div>
+            <div
+              id="discount-row"
+              class="flex justify-between text-emerald-400 font-semibold hidden"
+            >
+              <span>İndirim:</span><span id="cart-discount">-€0</span>
+            </div>
+            <div
+              class="flex justify-between items-center text-sm font-black text-white pt-2 border-t border-zinc-800"
+            >
+              <span>Toplam:</span
+              ><span id="cart-total" class="text-white text-base">€0</span>
+            </div>
+          </div>
+          <button
+            id="complete-order-btn"
+            class="w-full bg-white hover:bg-zinc-200 text-black font-black py-3.5 rounded-lg transition text-xs uppercase tracking-widest cursor-pointer"
+          >
+            Siparişi Tamamla
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="size-chart-modal"
+      class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <div
+        class="bg-[#111] border border-zinc-800 w-full max-w-xl rounded-2xl p-6 relative shadow-2xl"
+      >
+        <button
+          id="close-size-chart-btn"
+          class="absolute top-4 right-4 text-zinc-400 hover:text-white text-2xl cursor-pointer"
+        >
+          &times;
+        </button>
+        <h3
+          class="text-base font-black text-white mb-2 uppercase tracking-wide"
+        >
+          Beden ve Ölçü Rehberi
+        </h3>
+        <p class="text-xs text-zinc-400 mb-6">
+          Ölçüler cm cinsindendir. Heavyweight Boxy/Drop-shoulder kalıptır.
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left text-zinc-300 border-collapse">
+            <thead>
+              <tr
+                class="border-b border-zinc-800 text-zinc-500 uppercase tracking-wider"
+              >
+                <th class="p-3">Beden</th>
+                <th class="p-3">Boy (cm)</th>
+                <th class="p-3">Göğüs (cm)</th>
+                <th class="p-3">Omuz (cm)</th>
+                <th class="p-3">Kol (cm)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-800/50">
+              <tr>
+                <td class="p-3 font-bold text-white">S</td>
+                <td class="p-3">66</td>
+                <td class="p-3">63</td>
+                <td class="p-3">63</td>
+                <td class="p-3">56</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-white">M</td>
+                <td class="p-3">68</td>
+                <td class="p-3">65</td>
+                <td class="p-3">65</td>
+                <td class="p-3">57</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-white">L</td>
+                <td class="p-3">70</td>
+                <td class="p-3">67</td>
+                <td class="p-3">67</td>
+                <td class="p-3">58</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-bold text-white">XL</td>
+                <td class="p-3">72</td>
+                <td class="p-3">69</td>
+                <td class="p-3">69</td>
+                <td class="p-3">59</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
