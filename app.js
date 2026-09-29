@@ -31,10 +31,10 @@ let products = [];
 let cart = JSON.parse(localStorage.getItem("hoodie_cart")) || [];
 let wishlist = JSON.parse(localStorage.getItem("hoodie_wishlist")) || [];
 
-// ⚠️ DİKKAT: Yönetim panelinin sadece sende görünmesi için kendi Firebase giriş mailini buraya yazmalısın!
+// ⚠️ Yönetim panelinin sadece sende görünmesi gereken e-posta adresi
 const ADMIN_EMAIL = "16ardaguner@gmail.com";
 
-// Kullanıcı Oturum ve Yetki Kontrolü
+// Kullanıcı Oturum ve Profil Menüsü Yönetimi
 onAuthStateChanged(auth, async (user) => {
   const userAuthArea = document.getElementById("user-auth-area");
   if (!userAuthArea) return;
@@ -53,24 +53,52 @@ onAuthStateChanged(auth, async (user) => {
       console.error("Bakiye okunamadı:", e);
     }
 
+    // Profil Adam Simgesi ve Açılır Menü (Dropdown) Yapısı
     userAuthArea.innerHTML = `
-      <div class="flex items-center gap-2 sm:gap-3">
-        <a href="wallet.html" class="bg-zinc-900 border border-zinc-800 px-2.5 py-1.5 rounded-lg text-amber-400 font-bold hover:bg-zinc-800 transition text-xs flex items-center gap-1" title="Cüzdan Bakiyesi">
-          <span>€${walletBalance.toFixed(2)}</span>
-        </a>
-        <a href="my-orders.html" class="hidden sm:inline-block text-zinc-300 hover:text-white transition font-bold text-xs uppercase tracking-wider">Siparişlerim</a>
-        ${isAdmin ? '<a href="admin.html" class="bg-red-600/20 border border-red-500/30 text-red-400 px-2.5 py-1 rounded text-xs font-bold hover:bg-red-600/30 transition">Yönetim</a>' : ""}
-        <button id="logout-btn" class="text-zinc-400 hover:text-white text-xs underline cursor-pointer ml-1">Çıkış</button>
+      <div class="relative">
+        <button id="profile-menu-btn" class="text-zinc-300 hover:text-white transition cursor-pointer p-1.5 flex items-center gap-1 focus:outline-none" title="Profilim" aria-label="Profil Menüsü">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </button>
+        
+        <!-- Açılır Profil Menüsü -->
+        <div id="profile-dropdown" class="absolute right-0 mt-2 w-52 bg-[#111] border border-zinc-800 rounded-2xl shadow-2xl py-2 hidden z-50">
+          <div class="px-4 py-2.5 text-xs text-amber-400 font-bold border-b border-zinc-800/80 flex justify-between items-center">
+            <span>Bakiye:</span>
+            <span>€${walletBalance.toFixed(2)}</span>
+          </div>
+          <a href="wallet.html" class="block px-4 py-2.5 text-xs text-zinc-300 hover:text-white hover:bg-zinc-900 transition font-bold uppercase">Cüzdanım</a>
+          <a href="my-orders.html" class="block px-4 py-2.5 text-xs text-zinc-300 hover:text-white hover:bg-zinc-900 transition font-bold uppercase">Siparişlerim</a>
+          ${isAdmin ? '<a href="admin.html" class="block px-4 py-2.5 text-xs text-zinc-300 hover:text-white hover:bg-zinc-900 transition font-bold uppercase">Yönetim</a>' : ""}
+          <div class="border-t border-zinc-800/80 mt-1 pt-1">
+            <button id="logout-btn" class="w-full text-left px-4 py-2.5 text-xs text-zinc-400 hover:text-red-500 hover:bg-zinc-900 transition font-bold uppercase cursor-pointer">Çıkış Yap</button>
+          </div>
+        </div>
       </div>
     `;
 
-    const logoutBtn = document.getElementById("logout-btn");
-    if (logoutBtn) {
-      logoutBtn.addEventListener("click", async () => {
-        await signOut(auth);
-        window.location.reload();
-      });
-    }
+    // Dropdown Açma / Kapatma ve Çıkış Mantığı
+    setTimeout(() => {
+      const profileBtn = document.getElementById("profile-menu-btn");
+      const profileDropdown = document.getElementById("profile-dropdown");
+
+      if (profileBtn && profileDropdown) {
+        profileBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          profileDropdown.classList.toggle("hidden");
+        });
+        document.addEventListener("click", () => {
+          profileDropdown.classList.add("hidden");
+        });
+      }
+
+      const logoutBtn = document.getElementById("logout-btn");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", async () => {
+          await signOut(auth);
+          window.location.reload();
+        });
+      }
+    }, 100);
   } else {
     userAuthArea.innerHTML = `
       <a href="login.html" class="bg-white text-black font-extrabold px-3.5 py-2 rounded-sm text-xs uppercase tracking-wider hover:bg-zinc-200 transition">
