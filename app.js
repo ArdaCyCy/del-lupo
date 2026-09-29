@@ -34,7 +34,7 @@ let wishlist = JSON.parse(localStorage.getItem("hoodie_wishlist")) || [];
 // ⚠️ Yönetim panelinin sadece sende görünmesi gereken e-posta adresi
 const ADMIN_EMAIL = "16ardaguner@gmail.com";
 
-// Kullanıcı Oturum ve Profil Menüsü Yönetimi
+// Kullanıcı Oturum ve Profil Menüsü Yönetimi (Bakiyeli)
 onAuthStateChanged(auth, async (user) => {
   const userAuthArea = document.getElementById("user-auth-area");
   if (!userAuthArea) return;
@@ -53,19 +53,16 @@ onAuthStateChanged(auth, async (user) => {
       console.error("Bakiye okunamadı:", e);
     }
 
-    // Profil Adam Simgesi ve Açılır Menü (Dropdown) Yapısı
+    // Profil Adam Simgesi ve Sağında Bakiye + Açılır Menü (Dropdown)
     userAuthArea.innerHTML = `
-      <div class="relative">
-        <button id="profile-menu-btn" class="text-zinc-300 hover:text-white transition cursor-pointer p-1.5 flex items-center gap-1 focus:outline-none" title="Profilim" aria-label="Profil Menüsü">
+      <div class="relative flex items-center">
+        <button id="profile-menu-btn" class="text-zinc-300 hover:text-white transition cursor-pointer p-1.5 flex items-center gap-1.5 focus:outline-none" title="Profilim" aria-label="Profil Menüsü">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span class="text-xs font-bold text-amber-400">€${walletBalance.toFixed(2)}</span>
         </button>
         
         <!-- Açılır Profil Menüsü -->
-        <div id="profile-dropdown" class="absolute right-0 mt-2 w-52 bg-[#111] border border-zinc-800 rounded-2xl shadow-2xl py-2 hidden z-50">
-          <div class="px-4 py-2.5 text-xs text-amber-400 font-bold border-b border-zinc-800/80 flex justify-between items-center">
-            <span>Bakiye:</span>
-            <span>€${walletBalance.toFixed(2)}</span>
-          </div>
+        <div id="profile-dropdown" class="absolute right-0 mt-2 w-52 bg-[#111] border border-zinc-800 rounded-2xl shadow-2xl py-2 hidden z-50 top-full">
           <a href="wallet.html" class="block px-4 py-2.5 text-xs text-zinc-300 hover:text-white hover:bg-zinc-900 transition font-bold uppercase">Cüzdanım</a>
           <a href="my-orders.html" class="block px-4 py-2.5 text-xs text-zinc-300 hover:text-white hover:bg-zinc-900 transition font-bold uppercase">Siparişlerim</a>
           ${isAdmin ? '<a href="admin.html" class="block px-4 py-2.5 text-xs text-zinc-300 hover:text-white hover:bg-zinc-900 transition font-bold uppercase">Yönetim</a>' : ""}
