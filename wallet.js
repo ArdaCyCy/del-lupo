@@ -3,13 +3,13 @@ import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstati
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBnGubOKlQvh8spOhtLalO4ez9J8yu0PpI",
-  authDomain: "hoodie-store-9af27.firebaseapp.com",
-  projectId: "hoodie-store-9af27",
-  storageBucket: "hoodie-store-9af27.firebasestorage.app",
-  messagingSenderId: "51378890059",
-  appId: "1:51378890059:web:9ebd26be949320d6c5b4ce",
-  measurementId: "G-Y1C8QYZVX1"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
